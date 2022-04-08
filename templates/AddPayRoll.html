@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>WorkBalance | Add PayRoll</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Favicon
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="static/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/img/favicon.png">
+
+    <!-- Stylesheets
+    ================================================== -->
+    <!-- Bootstrap core CSS -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/css/responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <script>
+        function multiplyBy()
+        {
+        salary = document.getElementById(
+            "salary").value;
+        if(salary < 5000){
+            document.getElementById(
+            "epf").innerHTML = salary * 11 / 100;
+            document.getElementById(
+            "socso").innerHTML = salary * 0.5 / 100;
+            document.getElementById(
+            "tax").innerHTML = salary * 0.0 / 100;
+            document.getElementById(
+            "net").innerHTML = salary - (salary * 11 / 100) - (salary * 0.5 / 100) - (salary * 0 / 100);
+        }else if(salary > 5001 || salary < 20000){
+            document.getElementById(
+            "epf").innerHTML = salary * 11 / 100;
+            document.getElementById(
+            "socso").innerHTML = salary * 0.5 / 100;
+            document.getElementById(
+            "tax").innerHTML = salary * 1 / 100;
+            document.getElementById(
+            "net").innerHTML = salary - (salary * 11 / 100) - (salary * 0.5 / 100) - (salary * 1 / 100);
+        }else if(salary > 20001 || salary < 35000){
+            document.getElementById(
+            "epf").innerHTML = salary * 11 / 100;
+            document.getElementById(
+            "socso").innerHTML = salary * 0.5 / 100;
+            document.getElementById(
+            "tax").innerHTML = salary * 3 / 100;
+            document.getElementById(
+            "net").innerHTML = salary - (salary * 11 / 100) - (salary * 0.5 / 100) - (salary * 3 / 100);
+        }else if(salary > 35001 || salary < 50000){
+            document.getElementById(
+            "epf").innerHTML = salary * 11 / 100;
+            document.getElementById(
+            "socso").innerHTML = salary * 0.5 / 100;
+            document.getElementById(
+            "tax").innerHTML = salary *  8/ 100;
+            document.getElementById(
+            "net").innerHTML = salary - (salary * 11 / 100) - (salary * 0.5 / 100) - (salary * 8 / 100);
+        }else{
+            document.getElementById(
+            "epf").innerHTML = salary * 11 / 100;
+            document.getElementById(
+            "socso").innerHTML = salary * 0.5 / 100;
+            document.getElementById(
+            "tax").innerHTML = salary *  14 / 100;
+            document.getElementById(
+            "net").innerHTML = salary - (salary * 11 / 100) - (salary * 0.5 / 100) - (salary * 14 / 100);
+        }
+
+        }
+        
+    </script>
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">
+                   
+                    <a class="site-title"><span>Work</span>Balance</a>
+
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="{{ url_for('homepage') }}" data-toggle="dropdown">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">PayRoll<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="{{ url_for('payroll') }}">Add PayRoll</a></li>
+                              <li><a href="{{ url_for('getemppayroll') }}">Edit PayRoll</a></li>
+                              <li><a href="{{ url_for('getviewemppayroll') }}">View PayRoll</a></li>
+                            </ul>
+
+                        </li>
+                        <li><a href="{{ url_for('Add') }}">Add</a></li>
+                        <li><a href="{{ url_for('view') }}">View</a></li>
+                        <li><a href="{{ url_for('edit') }}">Edit</a></li>
+                        <li><a href="{{ url_for('delete') }}">Delete</a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero contact-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>PayRoll</h1>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-contact-us">
+
+            <div class="container">
+                <div class="row mt-50">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="text-center heading-separator">Calculate and Add PayRoll</h2>
+                        <form action="/addpayroll" autocomplete="on" method = "POST">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                      <label for="email">Employee ID:</label>
+                                      <input type="number" class="form-control" id="emp_id" name="emp_id" required="true">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 mt-20">
+                                    <div class="form-group">
+                                      <label for="name">Salary:</label>
+                                      <input type="number" class="form-control" id="salary" name="salary" required="true">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 mt-20">
+                                    <div class="form-group">
+                                      <label for="name">EPF:</label>
+                                      <textarea type="number" class="form-control" style="height: 60px; resize: none; " readonly="true" id="epf" name="epf"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 mt-20">
+                                    <div class="form-group">
+                                      <label for="name">SOCSO:</label>
+                                      <textarea type="number" class="form-control" style="height: 60px; resize: none; " readonly="true" id="socso" name="socso"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 mt-20">
+                                    <div class="form-group">
+                                      <label for="name">Tax:</label>
+                                      <textarea type="number" class="form-control" style="height: 60px; resize: none; " readonly="true" id="tax" name="tax"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 mt-20">
+                                    <div class="form-group">
+                                      <label for="name">Net Salary:</label>
+                                      <textarea type="number" class="form-control" style="height: 60px; resize: none; " readonly="true" id="net" name="net"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-20 col-sm-6">
+                                <input type="button" class="btn btn-green" onClick="multiplyBy()" value="Calculate">
+                            </div>
+                            <div class="text-center mt-20 col-sm-6">
+                                <button class="btn btn-green">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- /.form -->
+            </div>
+            
+        </section><!-- /.section-contact-us -->
+
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <a class="twitter-bg" href="#"><i class="fa fa-twitter"></i></a>
+                            <a class="facebook-bg" href="#"><i class="fa fa-facebook"></i></a>
+                            <a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a>
+                            <a class="linkedin-bg" href="#"><i class="fa fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p>WorkBalance &copy; Copyright 2022. Designed By WorkBalance</p>
+                            <p>All Rights Reserved by WorkBalance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/bootstrap-select.min.js"></script>
+    <script src="static/js/jquery.slicknav.min.js"></script>
+    <script src="static/js/jquery.countTo.min.js"></script>
+    <script src="static/js/jquery.shuffle.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+    <script src="static/js/script.js"></script>
+
+</body>
+</html>
